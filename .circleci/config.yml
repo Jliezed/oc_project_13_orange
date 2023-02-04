@@ -1,0 +1,24 @@
+# CircleCI configuration file
+version: 2.1
+
+# Use Orbs to simplify your config.
+orbs:
+  python: circleci/python@2.1.1
+  docker: circleci/docker@2.2.0
+  heroku: circleci/heroku@2.0.0
+
+jobs:
+  build_and_test: # this can be any name you choose
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout # checkout source code
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run tests
+          command: python -m pytest
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
