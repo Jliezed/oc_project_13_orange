@@ -8,7 +8,7 @@ orbs:
   heroku: circleci/heroku@2.0.0
 
 jobs:
-  test-and-lint:
+  test:
     docker:
       - image: cimg/python:3.10.2
     steps:
@@ -22,11 +22,18 @@ jobs:
           root: ~/project
           paths:
             - .
+  lint:
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout # checkout source code
+      - python/install-packages:
+          pkg-manager: pip
       - run:
           name: Run flake8
           command: flake8
-
 workflows:
   build_test_deploy:
     jobs:
-      - test-and-lint
+      - test
+      - lint
