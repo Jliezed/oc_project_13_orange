@@ -8,6 +8,17 @@ orbs:
   heroku: circleci/heroku@2.0.0
 
 jobs:
+  # LINTING & TEST
+  lint:
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout # checkout source code
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run flake8
+          command: flake8
   test:
     docker:
       - image: cimg/python:3.10.2
@@ -22,18 +33,26 @@ jobs:
           root: ~/project
           paths:
             - .
-  lint:
+
+  # DOCKER
+  build-push-docker-image:
     docker:
       - image: cimg/python:3.10.2
     steps:
       - checkout # checkout source code
-      - python/install-packages:
-          pkg-manager: pip
+      - setup_remote_docker
       - run:
-          name: Run flake8
-          command: flake8
+          name: Build Docker image
+          command: docker build -t $DOCKERHUB_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
+      - run:
+          name: Push Docker image
+          command: |
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push $DOCKERHUB_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
 workflows:
   build_test_deploy:
     jobs:
-      - test
       - lint
+      - test
+      - build-push-docker-image
+
