@@ -58,5 +58,3 @@ class LettingsDetailViewTestCase(TestCase):
         response = self.client.get(
             reverse('lettings:letting', kwargs={'letting_id': self.new_letting.pk}))
         self.assertContains(response, title)
-
-
