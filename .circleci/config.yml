@@ -8,6 +8,7 @@ orbs:
   heroku: circleci/heroku@2.0.0
 
 jobs:
+
   # PIP & REQUIREMENTS
   pip-and-requirements:
     executor: python/default # use the default executor defined within the orb
@@ -46,7 +47,7 @@ jobs:
           name: Run tests
           command: python3 manage.py test
       - store_test_results:
-            path: test-results
+          path: test-results
       - persist_to_workspace:
           root: ~/project
           paths:
