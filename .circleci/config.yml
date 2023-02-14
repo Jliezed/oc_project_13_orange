@@ -71,7 +71,20 @@ jobs:
             docker push $DOCKERHUB_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
 
   # HEROKU
-  # deploy-to-heroku:
+  deploy-to-heroku:
+    # executor: heroku/default
+    docker:
+      - image: $DOCKERHUB_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
+        auth:
+            username: $DOCKERHUB_USERNAME
+            password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      # - heroku/install
+      - run:
+          name: Deploy to Heroku
+          command: |
+            git push https://git.heroku.com/oc-lettings-jliezed.git
 
 workflows:
   build_test_deploy:
@@ -83,6 +96,12 @@ workflows:
           requires:
             - lint
             - test
+          filters:
+            branches:
+              only: master
+      - deploy-to-heroku:
+          requires:
+            - build-push-docker-image
           filters:
             branches:
               only: master
