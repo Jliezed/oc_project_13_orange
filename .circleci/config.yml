@@ -10,8 +10,9 @@ orbs:
 jobs:
   # LINTING & TEST
   lint:
-    docker:
-      - image: cimg/python:3.10.2
+    executor: python/default # use the default executor defined within the orb
+    #docker:
+    #  - image: cimg/python:3.10.2
     steps:
       - checkout # checkout source code
       - python/install-packages:
@@ -20,8 +21,9 @@ jobs:
           name: Run flake8
           command: flake8
   test:
-    docker:
-      - image: cimg/python:3.10.2
+    executor: python/default # use the default executor defined within the orb
+    #docker:
+    #  - image: cimg/python:3.10.2
     steps:
       - checkout # checkout source code
       - python/install-packages:
@@ -38,8 +40,9 @@ jobs:
 
   # DOCKER
   build-push-docker-image:
-    docker:
-      - image: cimg/python:3.10.2
+    executor: python/default # use the default executor defined within the orb
+    #docker:
+    #  - image: cimg/python:3.10.2
     steps:
       - checkout # checkout source code
       - setup_remote_docker
