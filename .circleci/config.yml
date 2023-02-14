@@ -29,6 +29,8 @@ jobs:
       - run:
           name: Run tests
           command: python3 manage.py test
+      - store_test_results:
+            path: test-results
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -49,10 +51,19 @@ jobs:
           command: |
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
+
+  # HEROKU
+  # deploy-to-heroku:
+
 workflows:
   build_test_deploy:
     jobs:
       - lint
       - test
-      - build-push-docker-image
-
+      - build-push-docker-image:
+          requires:
+            - lint
+            - test
+          filters:
+            branches:
+              only: master

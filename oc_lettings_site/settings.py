@@ -1,8 +1,11 @@
 import os
 
+# External libraries
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -14,7 +17,6 @@ SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
-
 
 # Application definition
 
@@ -59,7 +61,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'oc_lettings_site.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -69,7 +70,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'oc-lettings-site.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -89,7 +89,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -103,8 +102,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+sentry_sdk.init(
+    dsn="https://82f781dcc298469d9ed8b40dbfdafba9@o4504649831284736.ingest.sentry.io/4504649833185280",
+    integrations=[
+        DjangoIntegration(),
+    ],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
