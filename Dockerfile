@@ -23,6 +23,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Install the shell
 RUN apk add --no-cache bash
 
+# Install git
+RUN apk update && apk add git
+
 # Copy the rest of the app's code to the container
 COPY . .
 
