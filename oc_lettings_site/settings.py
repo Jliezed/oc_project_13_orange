@@ -107,7 +107,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Sentry  Settinngs
+# Sentry  Settings
 sentry_sdk.init(
     dsn="https://82f781dcc298469d9ed8b40dbfdafba9@o4504649831284736.ingest.sentry.io/4504649833185280",
     integrations=[
