@@ -8,7 +8,21 @@ orbs:
   heroku: circleci/heroku@2.0.0
 
 jobs:
-  # LINTING & TEST
+  # PIP & REQUIREMENTS
+  pip-and-requirements:
+    executor: python/default # use the default executor defined within the orb
+    #docker:
+    #  - image: cimg/python:3.10.2
+    steps:
+      - checkout # checkout source code
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Update pip
+          command: pip install --upgrade pip
+      - run:
+          name: Install requirements
+          command: pip install -r requirements.txt
   lint:
     executor: python/default # use the default executor defined within the orb
     #docker:
@@ -61,6 +75,7 @@ jobs:
 workflows:
   build_test_deploy:
     jobs:
+      - pip-and-requirements
       - lint
       - test
       - build-push-docker-image:
