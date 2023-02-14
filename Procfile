@@ -1,1 +1,1 @@
-web: gunicorn name_of_project.wsgi
+web: gunicorn oc_lettings_site.wsgi
