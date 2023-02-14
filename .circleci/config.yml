@@ -84,7 +84,7 @@ jobs:
       - run:
           name: Deploy to Heroku
           command: |
-            git push https://git.heroku.com/oc-lettings-jliezed.git
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git main
 
 workflows:
   build_test_deploy:
