@@ -1,9 +1,19 @@
-<title>{{ profile.user.username }}</title>
-<h1>{{ profile.user.username }}</h1>
-<p>First name: {{ profile.user.first_name }}</p>
-<p>Last name: {{ profile.user.last_name }}</p>
-<p>Email: {{ profile.user.email }}</p>
-<p>Favorite city: {{ profile.favorite_city }}</p>
-<div><a href="{% url 'profiles:profiles_index' %}">Back</a></div>
-<div><a href="{% url 'profiles:index' %}">Home</a></div>
-<div><a href="{% url 'lettings:lettings_index' %}">Lettings</a></div>
+{% extends "base.html" %}
+
+{% block title %}<title>{{ profile.user.username }}</title>{% endblock %}
+
+{% block content %}
+
+    <section class="detail-content">
+        <h1>{{ profile.user.username }}</h1>
+        <p>First name: {{ profile.user.first_name }}</p>
+        <p>Last name: {{ profile.user.last_name }}</p>
+        <p>Email: {{ profile.user.email }}</p>
+        <p>Favorite city: {{ profile.favorite_city }}</p>
+        <div class="actions-links">
+            <div><a href="{% url 'profiles:profiles_index' %}">Back</a></div>
+            <div><a href="{% url 'profiles:index' %}">Home</a></div>
+            <div><a href="{% url 'lettings:lettings_index' %}">Lettings</a></div>
+        </div>
+    </section>
+{% endblock %}

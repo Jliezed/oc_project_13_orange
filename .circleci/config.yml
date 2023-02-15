@@ -8,12 +8,9 @@ orbs:
   heroku: circleci/heroku@2.0.0
 
 jobs:
-
   # PIP & REQUIREMENTS
   pip-and-requirements:
     executor: python/default # use the default executor defined within the orb
-    #docker:
-    #  - image: cimg/python:3.10.2
     steps:
       - checkout # checkout source code
       - python/install-packages:
@@ -26,8 +23,6 @@ jobs:
           command: pip install -r requirements.txt
   lint:
     executor: python/default # use the default executor defined within the orb
-    #docker:
-    #  - image: cimg/python:3.10.2
     steps:
       - checkout # checkout source code
       - python/install-packages:
@@ -37,8 +32,6 @@ jobs:
           command: flake8
   test:
     executor: python/default # use the default executor defined within the orb
-    #docker:
-    #  - image: cimg/python:3.10.2
     steps:
       - checkout # checkout source code
       - python/install-packages:
@@ -46,8 +39,6 @@ jobs:
       - run:
           name: Run tests
           command: python3 manage.py test
-      - store_test_results:
-          path: test-results
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -56,8 +47,6 @@ jobs:
   # DOCKER
   build-push-docker-image:
     executor: python/default # use the default executor defined within the orb
-    #docker:
-    #  - image: cimg/python:3.10.2
     steps:
       - checkout # checkout source code
       - setup_remote_docker
@@ -67,8 +56,10 @@ jobs:
       - run:
           name: Push Docker image
           command: |
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
+      - store_test_results:
+          path: test-results
 
   # HEROKU
   deploy-to-heroku:
@@ -94,6 +85,7 @@ workflows:
       - test
       - build-push-docker-image:
           requires:
+            - pip-and-requirements
             - lint
             - test
           filters:

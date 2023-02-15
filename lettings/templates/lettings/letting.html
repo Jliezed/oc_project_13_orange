@@ -1,8 +1,20 @@
-<title>{{ title }}</title>
-<h1>{{ title }}</h1>
-<p>{{ address.number }} {{ address.street }}</p>
-<p>{{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
-<p>{{ address.country_iso_code }}</p>
-<div><a href="{% url 'lettings:lettings_index' %}">Back</a></div>
-<div><a href="{% url 'profiles:index' %}">Home</a></div>
-<div><a href="{% url 'profiles:profiles_index' %}">Profiles</a></div>
+{% extends "base.html" %}
+
+{% block title %}<title>{{ title }}</title>{% endblock %}
+
+{% block content %}
+
+    <section class="detail-content">
+
+        <h1>{{ title }}</h1>
+        <p>{{ address.number }} {{ address.street }}</p>
+        <p>{{ address.city }}, {{ address.state }} {{ address.zip_code }}</p>
+        <p>{{ address.country_iso_code }}</p>
+        <div class="actions-links">
+            <div><a href="{% url 'lettings:lettings_index' %}">Back</a></div>
+            <div><a href="{% url 'profiles:index' %}">Home</a></div>
+            <div><a href="{% url 'profiles:profiles_index' %}">Profiles</a></div>
+        </div>
+
+    </section>
+{% endblock %}
