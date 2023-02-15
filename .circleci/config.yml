@@ -50,7 +50,6 @@ jobs:
           path: test_results
 
   # DOCKER
-  # echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
   build-push-docker-image:
     executor: python/default # use the default executor defined within the orb
     steps:
@@ -81,6 +80,27 @@ jobs:
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
+  notify-sentry-deploy:
+    executor: python/default
+    environment:
+      SENTRY_ORG: $SENTRY_ORG
+      SENTRY_PROJECT: $SENTRY_PROJECT
+      SENTRY_ENVIRONMENT: $SENTRY_AUTH_TOKEN
+    steps:
+      - checkout
+      - run:
+          name: Notify Sentry of deployment
+          command: |
+            curl -sL https://sentry.io/get-cli/ | bash
+            export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+            sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+            sentry-cli releases set-commits $SENTRY_RELEASE --auto
+            sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps path-to-sourcemaps-if-applicable
+            sentry-cli releases finalize $SENTRY_RELEASE
+            sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_ENVIRONMENT
+
+
+
 workflows:
   build_test_deploy:
     jobs:
@@ -98,6 +118,12 @@ workflows:
       - deploy-to-heroku:
           requires:
             - build-push-docker-image
+          filters:
+            branches:
+              only: master
+      - notify-sentry-deploy:
+          requires:
+            - deploy-to-heroku
           filters:
             branches:
               only: master
