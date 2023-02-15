@@ -38,14 +38,16 @@ jobs:
           pkg-manager: pip
       - run:
           name: Run tests
-          command: python3 manage.py test
+          command: |
+            mkdir -p test-results
+            python3 manage.py test --junitxml=test-results/junit.xml
       - persist_to_workspace:
           root: ~/project
           paths:
             - .
-      - store_artifacts:
-          path: tests_results/
-          destination: circleci-docs
+      - store_test_results:
+          path: test-results
+
 
   # DOCKER
   build-push-docker-image:
