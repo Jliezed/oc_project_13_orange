@@ -43,6 +43,9 @@ jobs:
           root: ~/project
           paths:
             - .
+      - store_artifacts:
+          path: tests_results/
+          destination: circleci-docs
 
   # DOCKER
   build-push-docker-image:
@@ -58,8 +61,7 @@ jobs:
           command: |
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
-      - store_test_results:
-          path: test-results
+
 
   # HEROKU
   deploy-to-heroku:
