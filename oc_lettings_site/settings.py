@@ -130,7 +130,6 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
-
 # XML test runner
 TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.XMLTestRunner'
 TEST_OUTPUT_DIR = './test_results'
