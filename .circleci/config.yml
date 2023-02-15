@@ -5,7 +5,6 @@ version: 2.1
 orbs:
   python: circleci/python@2.1.1
   docker: circleci/docker@2.2.0
-  heroku: circleci/heroku@2.0.0
 
 jobs:
   # PIP & REQUIREMENTS
@@ -38,16 +37,13 @@ jobs:
           pkg-manager: pip
       - run:
           name: Run tests
-          command: |
-            mkdir -p test-results
-            python3 manage.py test --junitxml=test-results/junit.xml
+          command: python3 manage.py test
       - persist_to_workspace:
           root: ~/project
           paths:
             - .
       - store_test_results:
-          path: test-results
-
+          path: test_results
 
   # DOCKER
   build-push-docker-image:
@@ -63,7 +59,6 @@ jobs:
           command: |
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1
-
 
   # HEROKU
   deploy-to-heroku:
