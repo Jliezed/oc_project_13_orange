@@ -1,77 +1,161 @@
-## Résumé
+<div id="top"></div>
 
-Site web d'Orange County Lettings
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-## Développement local
 
-### Prérequis
 
-- Compte GitHub avec accès en lecture à ce repository
-- Git CLI
-- SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
+<h3 align="center">OC - PROJECT N°13 - Django App Deployment - CI/CD Pipeline </h3>
 
-### macOS / Linux
+  <p align="center">
+   Orange County Lettings is a small Django App deployed on Heroku and using a CI/CD Pipeline.
+    <br />
+    <a href="https://github.com/Jliezed/oc_project_12_epicevents">View Demo</a>
+    ·
+    <a href="https://github.com/Jliezed/oc_project_12_epicevents/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Jliezed/oc_project_12_epicevents/issues">Request Feature</a>
+  </p>
+</div>
 
-#### Cloner le repository
 
-- `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
 
-#### Créer l'environnement virtuel
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
+<!-- ABOUT THE PROJECT -->
+## Project Overview
+![Overview](static/assets/oc_project_13_overview.gif)
 
-#### Exécuter le site
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pip install --requirement requirements.txt`
-- `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-#### Linting
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `flake8`
 
-#### Tests unitaires
+## Built With & Tools
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- `source venv/bin/activate`
-- `pytest`
+* Python 
+* Django
+* Docker
+* CircleCI
+* Heroku
+* Sentry
 
-#### Base de données
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-- `cd /path/to/Python-OC-Lettings-FR`
-- Ouvrir une session shell `sqlite3`
-- Se connecter à la base de données `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
-  Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
-- `.quit` pour quitter
 
-#### Panel d'administration
 
-- Aller sur `http://localhost:8000/admin`
-- Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
+<!-- GETTING STARTED -->
+## Getting Started
 
-### Windows
+### Clone the repo
 
-Utilisation de PowerShell, comme ci-dessus sauf :
+   ```sh
+   git clone https://github.com/Jliezed/oc_project_13_orange.git
+   ```
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+### Run the app:
+### -> with a virtual environment
+Install venv library (if not yet in your computer)
+   ```sh
+   pip install venv
+   ```
+Create a virtual environment
+   ```sh
+   python -m venv env
+   ```
+Activate the virtual environment
+   ```sh
+   source env/bin/activate
+   ```
+#### Install packages using requirements.txt
+   ```sh
+   pip install -r requirements.txt
+   ```
+      
+#### Access to the App by running the server
+   ```sh
+   python manage.py runserver
+   ```
+#### Go to http://127.0.0.0:8000/ to access the app
+#### Go to http://127.0.0.0:8000/admin/ to access the admin panel (user: `admin`, password: `Abc1234!`)
+
+### -> with Docker
+#### Build the image
+   ```sh
+   docker build -t oc_project_13_orange .
+   ```
+
+#### Run the container
+   ```sh
+    docker run -p 8000:8000 oc_project_13_orange
+   ```
+
+#### Go to http://localhost:8000/ to access the app
+#### Go to http://localhost:8000/admin/ to access the admin panel (user: `admin`, password: `Abc1234!`)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Lintings & Tests
+### Run Flake8
+   ```sh
+   flake8
+   ```
+### Run Tests
+   ```sh
+  python manage.py test
+   ```
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Deployment - CI/CD Pipeline
+Define in the `config.yml` file the steps to be executed by CircleCI when a new commit is pushed to the repository.
+![CI/CD Pipeline](static/assets/oc_project_13_cicd_pipeline.png)
+
+
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTACT -->
+## Contact
+
+Jliezed
+
+Project Link: [https://github.com/Jliezed/oc_project_12_epicevents.git](https://github.com/Jliezed/oc_project_10_softdesk.git)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
+[contributors-url]: https://github.com/Jliezed/oc_project_12_epicevents/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
+[forks-url]: https://github.com/Jliezed/oc_project_12_epicevents/network/members
+[stars-shield]: https://img.shields.io/github/stars/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
+[stars-url]: https://github.com/Jliezed/oc_project_12_epicevents/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
+[issues-url]: https://github.com/Jliezed/oc_project_12_epicevents/issues
+[license-shield]: https://img.shields.io/github/license/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
+[license-url]: https://github.com/Jliezed/oc_project_12_epicevents/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username
+[product-screenshot]: images/screenshot.png
