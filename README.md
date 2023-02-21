@@ -122,12 +122,43 @@ Activate the virtual environment
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Deployment - CI/CD Pipeline
-Define in the `config.yml` file the steps to be executed by CircleCI when a new commit is pushed to the repository.
-![CI/CD Pipeline](static/assets/oc_project_13_cicd_pipeline.png)
+Define in the `.circleci/config.yml` file the steps to be executed by CircleCI when a new commit is pushed to the repository.
+![CI/CD Pipeline](static/assets/circleci.png)
+### Step 1: Pip & Requirements
+- Install pip
+- Install requirements
+- If the installation fails, the build is stopped
+- If the installation passes, the build continues
 
+### Step 2: Linting
+- Run Flake8 to check the code quality
+- If Flake8 fails, the build is stopped
+- If Flake8 passes, the build continues
 
+### Step 3: Testing
+- Run tests
+- If tests fail, the build is stopped
+- If tests pass, the build continues
+- Tests results are saved in CircleCI
 
+### Step 4: Build Docker Image
+- Build the Docker image
+- If the build fails, the build is stopped
+- If the build passes, the build continues
+- The image is tagged with the commit SHA
+- The image is pushed to Docker Hub
+- Required: 
+  - Pip & Requirements passed
+  - Linting passed
+  - Testing passed
+- Only on branch: Master
 
+### Step 5: Deploy to Heroku
+- Deploy the Docker image to Heroku
+- If the deployment fails, the build is stopped
+- If the deployment passes, the build ends
+- Required:
+  - Build Docker Image passed
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
@@ -135,7 +166,7 @@ Define in the `config.yml` file the steps to be executed by CircleCI when a new 
 
 Jliezed
 
-Project Link: [https://github.com/Jliezed/oc_project_12_epicevents.git](https://github.com/Jliezed/oc_project_10_softdesk.git)
+Project Link: [https://github.com/Jliezed/oc_project_13_orange.git](https://github.com/Jliezed/oc_project_13_orange.git)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -146,16 +177,16 @@ Project Link: [https://github.com/Jliezed/oc_project_12_epicevents.git](https://
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
-[contributors-url]: https://github.com/Jliezed/oc_project_12_epicevents/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
-[forks-url]: https://github.com/Jliezed/oc_project_12_epicevents/network/members
-[stars-shield]: https://img.shields.io/github/stars/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
-[stars-url]: https://github.com/Jliezed/oc_project_12_epicevents/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
-[issues-url]: https://github.com/Jliezed/oc_project_12_epicevents/issues
-[license-shield]: https://img.shields.io/github/license/Jliezed/oc_project_12_epicevents.svg?style=for-the-badge
-[license-url]: https://github.com/Jliezed/oc_project_12_epicevents/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Jliezed/oc_project_13_orange.svg?style=for-the-badge
+[contributors-url]: https://github.com/Jliezed/oc_project_13_orange/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Jliezed/oc_project_13_orange.svg?style=for-the-badge
+[forks-url]: https://github.com/Jliezed/oc_project_13_orange/network/members
+[stars-shield]: https://img.shields.io/github/stars/Jliezed/oc_project_13_orange.svg?style=for-the-badge
+[stars-url]: https://github.com/Jliezed/oc_project_13_orange/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Jliezed/oc_project_13_orange.svg?style=for-the-badge
+[issues-url]: https://github.com/Jliezed/oc_project_13_orange/issues
+[license-shield]: https://img.shields.io/github/license/Jliezed/oc_project_13_orange.svg?style=for-the-badge
+[license-url]: https://github.com/Jliezed/oc_project_13_orange/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
