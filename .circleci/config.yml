@@ -87,7 +87,6 @@ workflows:
       - build-push-docker-image:
           requires:
             - pip-and-requirements
-            - lint
             - test
           filters:
             branches:
