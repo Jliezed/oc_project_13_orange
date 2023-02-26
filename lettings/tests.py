@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from lettings.models import Letting, Address
+from .models import Letting, Address
 
 
 class LettingsIndexViewTestCase(TestCase):
@@ -25,18 +25,20 @@ class LettingsIndexViewTestCase(TestCase):
 
 class LettingsDetailViewTestCase(TestCase):
     def setUp(self):
-        self.new_address = Address.objects.create(
-            number=1,
-            street="success street",
-            city="dream",
-            state="big",
-            zip_code=00000,
-            country_iso_code="UV",
-        )
-        self.new_letting = Letting.objects.create(
-            title="test",
-            address=self.new_address,
-        )
+        # Create an address
+        self.new_address = Address()
+        self.new_address.number = 1
+        self.new_address.street = "success street"
+        self.new_address.city = "dream"
+        self.new_address.state = "big"
+        self.new_address.zip_code = 00000
+        self.new_address.country_iso_code = "UV"
+        self.new_address.save()
+
+        self.new_letting = Letting()
+        self.new_letting.title = "test"
+        self.new_letting.address = self.new_address
+        self.new_letting.save()
 
     def test_view_url_exists_at_desired_location(self):
         response = self.client.get(f"/lettings/{self.new_letting.pk}/")

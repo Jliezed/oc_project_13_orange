@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from profiles.models import Profile
+from .models import Profile
 from django.contrib.auth.models import User
 
 
@@ -50,10 +50,10 @@ class LettingsDetailViewTestCase(TestCase):
             email="test@test.com",
             password="secretsecret"
         )
-        self.new_profile = Profile.objects.create(
-            user=self.new_user,
-            favorite_city="Shanghai",
-        )
+        self.new_profile = Profile()
+        self.new_profile.user = self.new_user
+        self.new_profile.favorite_city = "Shanghai"
+        self.new_profile.save()
 
     def test_view_url_exists_at_desired_location(self):
         response = self.client.get(f"/profiles/{self.new_profile.user.username}/")
