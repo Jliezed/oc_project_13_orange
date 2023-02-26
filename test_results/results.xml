@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="lettings.tests.LettingsDetailViewTestCase-20230226104600" tests="4" file="lettings/tests.py" time="0.085" timestamp="2023-02-26T10:46:01" failures="0" errors="0" skipped="0">
+		<testcase classname="lettings.tests.LettingsDetailViewTestCase" name="test_title" time="0.030" timestamp="2023-02-26T10:46:01" file="lettings/tests.py" line="58"/>
+		<testcase classname="lettings.tests.LettingsDetailViewTestCase" name="test_view_url_accessible_by_name" time="0.020" timestamp="2023-02-26T10:46:01" file="lettings/tests.py" line="47"/>
+		<testcase classname="lettings.tests.LettingsDetailViewTestCase" name="test_view_url_exists_at_desired_location" time="0.018" timestamp="2023-02-26T10:46:01" file="lettings/tests.py" line="43"/>
+		<testcase classname="lettings.tests.LettingsDetailViewTestCase" name="test_view_uses_correct_template" time="0.017" timestamp="2023-02-26T10:46:01" file="lettings/tests.py" line="52"/>
+	</testsuite>
+	<testsuite name="lettings.tests.LettingsIndexViewTestCase-20230226104600" tests="4" file="lettings/tests.py" time="0.065" timestamp="2023-02-26T10:46:01" failures="0" errors="0" skipped="0">
+		<testcase classname="lettings.tests.LettingsIndexViewTestCase" name="test_title" time="0.018" timestamp="2023-02-26T10:46:01" file="lettings/tests.py" line="21"/>
+		<testcase classname="lettings.tests.LettingsIndexViewTestCase" name="test_view_url_accessible_by_name" time="0.016" timestamp="2023-02-26T10:46:01" file="lettings/tests.py" line="12"/>
+		<testcase classname="lettings.tests.LettingsIndexViewTestCase" name="test_view_url_exists_at_desired_location" time="0.015" timestamp="2023-02-26T10:46:01" file="lettings/tests.py" line="8"/>
+		<testcase classname="lettings.tests.LettingsIndexViewTestCase" name="test_view_uses_correct_template" time="0.016" timestamp="2023-02-26T10:46:01" file="lettings/tests.py" line="16"/>
+	</testsuite>
+	<testsuite name="profiles.tests.IndexViewTestCase-20230226104600" tests="4" file="profiles/tests.py" time="0.062" timestamp="2023-02-26T10:46:01" failures="0" errors="0" skipped="0">
+		<testcase classname="profiles.tests.IndexViewTestCase" name="test_title" time="0.016" timestamp="2023-02-26T10:46:01" file="profiles/tests.py" line="22"/>
+		<testcase classname="profiles.tests.IndexViewTestCase" name="test_view_url_accessible_by_name" time="0.016" timestamp="2023-02-26T10:46:01" file="profiles/tests.py" line="13"/>
+		<testcase classname="profiles.tests.IndexViewTestCase" name="test_view_url_exists_at_desired_location" time="0.014" timestamp="2023-02-26T10:46:01" file="profiles/tests.py" line="9"/>
+		<testcase classname="profiles.tests.IndexViewTestCase" name="test_view_uses_correct_template" time="0.015" timestamp="2023-02-26T10:46:01" file="profiles/tests.py" line="17"/>
+	</testsuite>
+	<testsuite name="profiles.tests.LettingsDetailViewTestCase-20230226104600" tests="4" file="profiles/tests.py" time="0.885" timestamp="2023-02-26T10:46:02" failures="0" errors="0" skipped="0">
+		<testcase classname="profiles.tests.LettingsDetailViewTestCase" name="test_title" time="0.224" timestamp="2023-02-26T10:46:01" file="profiles/tests.py" line="77"/>
+		<testcase classname="profiles.tests.LettingsDetailViewTestCase" name="test_view_url_accessible_by_name" time="0.222" timestamp="2023-02-26T10:46:01" file="profiles/tests.py" line="62"/>
+		<testcase classname="profiles.tests.LettingsDetailViewTestCase" name="test_view_url_exists_at_desired_location" time="0.221" timestamp="2023-02-26T10:46:01" file="profiles/tests.py" line="58"/>
+		<testcase classname="profiles.tests.LettingsDetailViewTestCase" name="test_view_uses_correct_template" time="0.218" timestamp="2023-02-26T10:46:02" file="profiles/tests.py" line="69"/>
+	</testsuite>
+	<testsuite name="profiles.tests.ProfileIndexViewTestCase-20230226104600" tests="4" file="profiles/tests.py" time="0.064" timestamp="2023-02-26T10:46:02" failures="0" errors="0" skipped="0">
+		<testcase classname="profiles.tests.ProfileIndexViewTestCase" name="test_title" time="0.017" timestamp="2023-02-26T10:46:02" file="profiles/tests.py" line="41"/>
+		<testcase classname="profiles.tests.ProfileIndexViewTestCase" name="test_view_url_accessible_by_name" time="0.018" timestamp="2023-02-26T10:46:02" file="profiles/tests.py" line="32"/>
+		<testcase classname="profiles.tests.ProfileIndexViewTestCase" name="test_view_url_exists_at_desired_location" time="0.015" timestamp="2023-02-26T10:46:02" file="profiles/tests.py" line="28"/>
+		<testcase classname="profiles.tests.ProfileIndexViewTestCase" name="test_view_uses_correct_template" time="0.014" timestamp="2023-02-26T10:46:02" file="profiles/tests.py" line="36"/>
+	</testsuite>
+</testsuites>
