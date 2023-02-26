@@ -23,7 +23,7 @@ ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "oc-lettings-jliezed.herokuapp.com", "l
 # Application definition
 
 INSTALLED_APPS = [
-    # 'oc_lettings_site.apps.OCLettingsSiteConfig',
+    'oc_lettings_site.apps.OCLettingsSiteConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,3 +136,6 @@ sentry_sdk.init(
 TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.XMLTestRunner'
 TEST_OUTPUT_DIR = './test_results'
 TEST_OUTPUT_FILE_NAME = 'results.xml'
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
