@@ -8,10 +8,18 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![oc-project][oc-project-shield]][oc-project-url]
+[![django][django-shield]][django-url]
+[![postgresql][postgresql-shield]][postgresql-url]
+[![tests][tests-shield]][tests-url]
+[![linting][linting-shield]][linting-url]
+[![docker][docker-shield]][docker-url]
+[![cicd][ci-cd-pipeline-shield]][ci-cd-pipeline-url]
+[![circleci][circleci-shield]][circleci-url]
+[![heroku][heroku-shield]][heroku-url]
+[![sentry][sentry-shield]][sentry-url]
+
+
 
 
 
@@ -19,18 +27,16 @@
 <br />
 <div align="center">
 
-<h3 align="center">OC - PROJECT N°13 - Django App Deployment - CI/CD Pipeline </h3>
+<h1 align="center">OC - PROJECT N°13 - Django App Deployment - CI/CD Pipeline </h1>
 
   <p align="center">
    Orange County Lettings is a small Django App deployed on Heroku and using a CI/CD Pipeline.
     <br />
-    <a href="https://github.com/Jliezed/oc_project_12_epicevents">View Demo</a>
-    ·
-    <a href="https://github.com/Jliezed/oc_project_12_epicevents/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Jliezed/oc_project_12_epicevents/issues">Request Feature</a>
-  </p>
+</p>
 </div>
+
+<img src="https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80">
+<a href="https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"><small>By Ian Dooley</small></a>
 
 
 
@@ -164,32 +170,38 @@ Define in the `.circleci/config.yml` file the steps to be executed by CircleCI w
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<!-- CONTACT -->
-## Contact
-
-Jliezed
-
-Project Link: [https://github.com/Jliezed/oc_project_13_orange.git](https://github.com/Jliezed/oc_project_13_orange.git)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Jliezed/oc_project_13_orange.svg?style=for-the-badge
-[contributors-url]: https://github.com/Jliezed/oc_project_13_orange/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Jliezed/oc_project_13_orange.svg?style=for-the-badge
-[forks-url]: https://github.com/Jliezed/oc_project_13_orange/network/members
-[stars-shield]: https://img.shields.io/github/stars/Jliezed/oc_project_13_orange.svg?style=for-the-badge
-[stars-url]: https://github.com/Jliezed/oc_project_13_orange/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Jliezed/oc_project_13_orange.svg?style=for-the-badge
-[issues-url]: https://github.com/Jliezed/oc_project_13_orange/issues
-[license-shield]: https://img.shields.io/github/license/Jliezed/oc_project_13_orange.svg?style=for-the-badge
-[license-url]: https://github.com/Jliezed/oc_project_13_orange/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[oc-project-shield]: https://img.shields.io/badge/OPENCLASSROOMS-PROJECT-blueviolet?style=for-the-badge
+[oc-project-url]: https://openclassrooms.com/fr/paths/518-developpeur-dapplication-python
+
+[ci-cd-pipeline-shield]: https://img.shields.io/badge/-CICD%20PIPELINE-blue?style=for-the-badge
+[ci-cd-pipeline-url]: https://circleci.com/
+
+[circleci-shield]: https://img.shields.io/badge/-CIRCLECI-blue?style=for-the-badge
+[circleci-url]: https://circleci.com/
+
+[heroku-shield]: https://img.shields.io/badge/-HEROKU-blue?style=for-the-badge
+[heroku-url]: https://www.heroku.com/
+
+[sentry-shield]: https://img.shields.io/badge/-SENTRY-blue?style=for-the-badge
+[sentry-url]: https://sentry.io/
+
+[docker-shield]: https://img.shields.io/badge/-DOCKER-blue?style=for-the-badge
+[docker-url]: https://www.docker.com/
+
+[django-shield]: https://img.shields.io/badge/-DJANGO-blue?style=for-the-badge
+[django-url]: https://www.djangoproject.com/
+
+[postgresql-shield]: https://img.shields.io/badge/-POSTGRESQL-blue?style=for-the-badge
+[postgresql-url]: https://www.postgresql.org/
+
+[tests-shield]: https://img.shields.io/badge/-TESTS-blue?style=for-the-badge
+[tests-url]: https://docs.djangoproject.com/en/3.2/topics/testing/
+
+[linting-shield]: https://img.shields.io/badge/-LINTING-blue?style=for-the-badge
+[linting-url]: https://flake8.pycqa.org/en/latest/
